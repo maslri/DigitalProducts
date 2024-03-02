@@ -1,5 +1,5 @@
 from django.db import models
-from django.utils.translation import ugettext as _
+from django.utils.translation import gettext as _
 
 # Create your models here.
 class Category(models.Model):
@@ -21,7 +21,7 @@ class Product(models.Model):
     description = models.TextField(_('description'), blank=True)
     avatar = models.ImageField(_('avatar'), upload_to='products/', blank=True)
     is_enable = models.BooleanField(_('is enable'), default=True)
-    categories = models.ManyToManyField(_('Category'), verbose_name=_('categories'), blank=True)
+    categories = models.ManyToManyField('Category', verbose_name=_('categories'), blank=True)
     created_time = models.DateTimeField(_('created time'), auto_now_add=True)
     updated_time = models.DateTimeField(_('updated time'), auto_now=True)
 
