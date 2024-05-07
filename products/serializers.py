@@ -18,10 +18,10 @@ class FileSerializer(serializers.ModelSerializer):
 class ProductSerializer(serializers.HyperlinkedModelSerializer):
     categories = CategorySerializer(many=True, read_only=True)
     files = FileSerializer(many=True, read_only=True)
-    # foo = serializers.SerializerMethodField()
+    foo = serializers.SerializerMethodField()
     class Meta:
         model = Product
-        fields = ('id', 'title', 'description', 'avatar', 'categories', 'files', 'url')
+        fields = ('id', 'title', 'description', 'avatar', 'categories', 'files', 'url', 'foo')
 
-    # def get_foo(self, obj):
-    #     return 'Hello World %s' % obj.title
+    def get_foo(self, obj):
+        return 'Hello World %s' % obj.title
